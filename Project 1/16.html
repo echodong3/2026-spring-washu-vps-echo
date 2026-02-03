@@ -10,12 +10,12 @@
       
         body{
             font-family:'Courier New', Courier, monospace;
-            background-color:rgb(248, 227, 217,1);
-            margin:200px;
+            background-color:rgb(255, 245, 244);
             color:rgb(104, 61, 27);
+            margin: 0 200px;
         }
         h2{
-            color:rgb(20, 101, 78,1);
+            color:rgb(252, 193, 85);
             font-family: "adobe-handwriting-ernie", sans-serif;
             font-weight: 400;
             font-style: normal;
@@ -31,53 +31,52 @@
             font-style: normal;
             font-size:20px;
         }
-        h1#menu{
+        h1#title{
             text-align:center;
             font-family: "adobe-handwriting-ernie", sans-serif;
             font-weight: 400;
             font-style: normal;
-            color:rgb(20, 101, 78,1);
+            color:rgb(252, 193, 85);
             font-size:50px;
         }
-        #title{
+        #subtitle{
           margin-bottom:-30px;
-          text-align:center;
         }
         #address{
           text-align:center;
         }
-        .food{
-            border:solid 0.1px rgb(51, 51, 51,1);
-            margin:10px
+        .dinner{
+          display:flex;
         }
-        #subtitle{
-            text-align:center;
-            color:rgb(20, 101, 78,1);
+        .left, .right{
+          padding:20px
         }
+
     </style>
 </head>
 <body>
-<h1 id="menu">
-    Yellowbelly</h1>
+<h1 id="title">
+    Yellowbelly Menu</h1>
 <p id="address"><i>4659 Lindell Blvd, St. Louis, MO 63108</i></p>
-<div class="food">
-    <h2 id="title">Dinner</h2>
-    <blockquote>
-    <h4 id="subtitle">- Cold -</h4>
-    <ol>
-    <li><p>Raw Oysters $4 / ea. </p></li>
-    <i>kimchi water & pickled daikon -OR- pineapple tepache, chili flake, lime (gf)</i>
-    <li><p>Salmon Tostada $18</p></li>
-    <i>raw salmon, avocado, seaweed, cabbage, sesame, soy, sudachi vin</i>
-    <li><p>Caesar Salad $12</p></li>
-    <i>napa cabbage, butter lettuce, manchego, togarashi, hawaiian sesame croutons</i>
-    <li><p>Beet salad $14</p></li>
-    <i>pickled candy cane & golden beets, mizuna greens, citrus vin, masala walnuts, grapefruit supremes, cotija crema</i>
-    </ol>
+<h2 id="subtitle">Dinner</h2>
+<hr>
+<div class="dinner">
+  <div class="left">
+  <h4>Cold</h4>
+  <ol>
+  <li><p>Raw Oysters $4 / ea. </p></li>
+  <i>kimchi water & pickled daikon -OR- pineapple tepache, chili flake, lime (gf)</i>
+  <li><p>Salmon Tostada $18</p></li>
+  <i>raw salmon, avocado, seaweed, cabbage, sesame, soy, sudachi vin</i>
+  <li><p>Caesar Salad $12</p></li>
+  <i>napa cabbage, butter lettuce, manchego, togarashi, hawaiian sesame croutons</i>
+  <li><p>Beet salad $14</p></li>
+  <i>pickled candy cane & golden beets, mizuna greens, citrus vin, masala walnuts, grapefruit supremes, cotija crema</i>
+  </ol>
 
 
-    <h4 id="subtitle">- Snack -</h4>
-    <ol>
+  <h4>Snack</h4>
+  <ol>
     <li><p>Nashville Hot Fried Oysters $4 / ea.</p></li>
     <i>pickles, hot sauce, mayo</i>
 
@@ -89,10 +88,11 @@
 
     <li><p>Hand-cut Beef Fat French Fries $10</p></li>
     <i>pickles, hot sauce, mayo</i>
-    </ol>
-
-    <h4 id="subtitle">- Small Plates -</h4>
-    <ol>
+  </ol>
+</div>
+<div class="right">
+  <h4>Small Plates</h4>
+  <ol>
     <li><p>Warm Mini Lobster Roll $22</p></li>
     <i>drawn sherry butter, pickled fennel seed, black sesame hawaiian roll</i>
 
@@ -104,11 +104,11 @@
 
     <li><p>Chili-glazed Pork Belly $18</p></li>
     <i>house kimchi, ozark forest mushrooms, jasmine rice, spicy mayo</i>
-    </ol>
+  </ol>
 
 
-    <h4 id="subtitle">- Large Plates -</h4>
-    <ol>
+  <h4>Large Plates</h4>
+  <ol>
     <li><p>Chorizo &amp; Broccolini Tamales $26</p></li>
     <i>impossible chorizo, bell pepper, broccolini, cashew queso, pibil, tomatillo salsa (vg, gf)</i>
 
@@ -120,33 +120,33 @@
 
     <li><p>Grilled Salmon $33</p></li>
     <i>spicy green thai curry, jasmine rice, parsnip, peppers, turmeric crunchies (gf)</i>
-    </ol>
-    </blockquote>
-    </div>
-<br><br>
-
-<div class="food">
-    <h2 id="title">Brunch</h2>
-    <blockquote>
-    <ol>
-    <li><p>Breakfast Potatoes $6</p></li>
-    <i>tiger point aioli (gf)</i>
-
-    <li><p>Full Breakfast $18</p></li>
-    <i>two cheddar eggs, breakfast potatoes, choice of protein, biscuit, tropical fruit</i>
-
-    <li><p>Coconut-Pecan Brioche French Toast $11</p></li>
-    <i>spiced rum whipped cream, berries</i>
-
-    <li><p>Steak &amp; Cheddar Burrito $18</p></li>
-    <i>flank steak, aged cheddar, breakfast potatoes, scrambled eggs, charred salsa, cheddar-jalapeño tortilla, guacamole</i>
-    </ol>
-    </blockquote>
+  </ol>
+</div>
 </div>
 <br><br>
 
-<div class="food">
-<h2 id="title">Cocktails</h2>
+
+<h2 id="subtitle">Brunch</h2>
+<hr>
+<blockquote>
+<ol>
+  <li><p>Breakfast Potatoes $6</p></li>
+  <i>tiger point aioli (gf)</i>
+
+  <li><p>Full Breakfast $18</p></li>
+  <i>two cheddar eggs, breakfast potatoes, choice of protein, biscuit, tropical fruit</i>
+
+  <li><p>Coconut-Pecan Brioche French Toast $11</p></li>
+  <i>spiced rum whipped cream, berries</i>
+
+  <li><p>Steak &amp; Cheddar Burrito $18</p></li>
+  <i>flank steak, aged cheddar, breakfast potatoes, scrambled eggs, charred salsa, cheddar-jalapeño tortilla, guacamole</i>
+</ol>
+</blockquote>
+<br><br>
+
+<h2 id="subtitle">Cocktails</h2>
+<hr>
 <blockquote>
 <ol>
   <li><p>Yellowbelly $14</p></li>
@@ -162,5 +162,5 @@
   <i>tequila, grapefruit, bitter, lime, sparkling lambrusco</i>
 </ol>
 </blockquote>
-</div>
+
 </body>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html_1</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/nvn6ewr.css">
+    <style>
+      
+        body{
+            font-family:'Courier New', Courier, monospace;
+            background-color:rgb(248, 227, 217,1);
+            margin:40px 200px;
+            color:rgb(104, 61, 27);
+        }
+        h2{
+            color:rgb(20, 101, 78,1);
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+            font-style: bold;
+            font-size:36px;
+          }
+        h2:hover{
+            background:rgb(238, 232, 220)
+        }
+        h4{
+            color:rgb(252, 193, 85);
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 400;
+            font-style: normal;
+            font-size:20px;
+        }
+        h1#menu_title{
+            text-align:center;
+            font-family: "adobe-handwriting-ernie", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color:rgb(20, 101, 78,1);
+            font-size:50px;
+            line-height:50px;
+        }
+        #title{
+          margin-bottom:-30px;
+          text-align:center;
+        }
+        #address{
+          text-align:center;
+        }
+        .food{
+            margin:10px
+        }
+        #subtitle{
+            text-align:center;
+            color:rgb(20, 101, 78,1);
+        }
+        .menu{
+            display:flex;
+        }
+        .total_left{
+            border-right:solid rgb(20, 101, 78,0.3) 2px;
+            padding-right:20px;
+            margin-top:0px;
+            text-align:center;
+        }
+        .total_right{
+            padding-top:240px;
+            padding-left:60px;
+            margin-top:0px;
+            display: flex;
+            flex-direction: column;
+        }
+        #cold, #snack, #small, #large{
+            margin-bottom:340px;
+            color:rgb(20, 101, 78,1);
+        }
+        .food_sections{
+            margin-bottom:50px;
+        }
+        #brunch, #cocktails{
+            margin-top:380px;
+            margin-bottom:350px;
+        }
+    </style>
+</head>
+<body>
+<div class="menu">
+<div class="total_left">
+    <h1 id="menu_title">
+        Yellow<br>belly</h1>
+    <p id="address"><i>4659 Lindell Blvd, St. Louis, MO 63108</i></p>
+    <h2 id="title">Dinner</h2>
+    <h4 id="cold">Cold</h4>
+    <h4 id="snack">Snack</h4>
+    <h4 id="small">Small Plates</h4>
+    <h4 id="large">Large Plates</h4>
+    <h2 id="brunch">Brunch</h2>
+    <h2 id="title">Cocktails</h2>
+</div>
+
+<div class="total_right">
+    <div class="food_sections">
+        <ol>
+        <li><p>Raw Oysters $4 / ea. </p></li>
+        <i>kimchi water & pickled daikon -OR- pineapple tepache, chili flake, lime (gf)</i>
+        <li><p>Salmon Tostada $18</p></li>
+        <i>raw salmon, avocado, seaweed, cabbage, sesame, soy, sudachi vin</i>
+        <li><p>Caesar Salad $12</p></li>
+        <i>napa cabbage, butter lettuce, manchego, togarashi, hawaiian sesame croutons</i>
+        <li><p>Beet salad $14</p></li>
+        <i>pickled candy cane & golden beets, mizuna greens, citrus vin, masala walnuts, grapefruit supremes, cotija crema</i>
+        </ol>
+    </div>
+    
+    <div class="food_sections">
+        <ol>
+        <li><p>Nashville Hot Fried Oysters $4 / ea.</p></li>
+        <i>pickles, hot sauce, mayo</i>
+    
+        <li><p>Grilled Salmon Skewers $13</p></li>
+        <i>gochujang glaze, green papaya salad, thai-chili lemongrass vinaigrette, roasted peanut</i>
+    
+        <li><p>Cheddar Biscuits $8</p></li>
+        <i>umami shrimp butter</i>
+    
+        <li><p>Hand-cut Beef Fat French Fries $10</p></li>
+        <i>pickles, hot sauce, mayo</i>
+        </ol>
+    </div>
+     
+    <div class="food_sections">
+        <ol>
+        <li><p>Warm Mini Lobster Roll $22</p></li>
+        <i>drawn sherry butter, pickled fennel seed, black sesame hawaiian roll</i>
+    
+        <li><p>Brussels Sprouts $14</p></li>
+        <i>fish sauce, thai chili, lime, granny smith apple kimchi, roasted peanuts (vg upon request)</i>
+    
+        <li><p>Charred Carrots $18</p></li>
+        <i>chimichurri, toasted macadamia nuts, eel sauce (v)</i>
+    
+        <li><p>Chili-glazed Pork Belly $18</p></li>
+        <i>house kimchi, ozark forest mushrooms, jasmine rice, spicy mayo</i>
+        </ol>
+    </div>
+    
+    <div class="food_sections">
+        <ol>
+        <li><p>Chorizo &amp; Broccolini Tamales $26</p></li>
+        <i>impossible chorizo, bell pepper, broccolini, cashew queso, pibil, tomatillo salsa (vg, gf)</i>
+    
+        <li><p>Seared Scallops $40</p></li>
+        <i>three sea scallops, sweet corn grits, chili glazed pork belly, mojo verde</i>
+    
+        <li><p>Moroccan Spiced Grouper $50</p></li>
+        <i>couscous, broccolini, blistered cherry tomatoes, chermoula butter, pistachio dukkah, spanish chorizo</i>
+    
+        <li><p>Grilled Salmon $33</p></li>
+        <i>spicy green thai curry, jasmine rice, parsnip, peppers, turmeric crunchies (gf)</i>
+        </ol>
+    </div>  
+    
+    <div class="food_sections">
+        <ol>
+        <li><p>Breakfast Potatoes $6</p></li>
+        <i>tiger point aioli (gf)</i>
+    
+        <li><p>Full Breakfast $18</p></li>
+        <i>two cheddar eggs, breakfast potatoes, choice of protein, biscuit, tropical fruit</i>
+    
+        <li><p>Coconut-Pecan Brioche French Toast $11</p></li>
+        <i>spiced rum whipped cream, berries</i>
+    
+        <li><p>Steak &amp; Cheddar Burrito $18</p></li>
+        <i>flank steak, aged cheddar, breakfast potatoes, scrambled eggs, charred salsa, cheddar-jalapeño tortilla, guacamole</i>
+        </ol>
+    </div>
+
+    
+    <div class="food_sections">
+        <ol>
+        <li><p>Yellowbelly $14</p></li>
+        <i>YB secret rum blend, pineapple, coconut, ginger, turmeric, lime</i>
+        
+        <li><p>Everybody Loves the Sunshine $14</p></li>
+        <i>tequila, aperol, mango caramel, passion fruit, lime</i>
+        
+        <li><p>Lazy Tiger $14</p></li>
+        <i>mezcal, orange, tajin, serrano, honey, lime</i>
+        
+        <li><p>Concrete Jungle $14</p></li>
+        <i>tequila, grapefruit, bitter, lime, sparkling lambrusco</i>
+        </ol>
+    </div>
+    </div>
+</div>
+</body>
