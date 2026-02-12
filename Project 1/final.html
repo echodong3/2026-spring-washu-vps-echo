@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>final website</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/nvn6ewr.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+      
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            background-color:rgb(246, 237, 223);
+            color:rgb(25, 11, 1);
+            margin:0px;
+        }
+
+        h1#title{
+            text-align:center;
+            font-family: "adobe-handwriting-ernie", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color:rgb(25, 11, 1);
+            font-size:50px;
+            margin-bottom:0px;
+
+        }
+        .subtitle{
+            font-size:48px;
+            font-family: "adobe-handwriting-ernie", sans-serif;
+            font-weight:400;
+            text-decoration: underline solid rgb(198, 185, 165) 2px;
+            text-align:center;
+            margin-bottom:12px;
+        }
+        #address{
+          text-align:center;
+        }
+        .anchor_tags{
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            margin-top:0px;
+            margin-bottom:-30px;
+        }
+        .anchor_tags span{
+            padding:10px 20px;
+            margin:30px;
+            border:1px solid rgb(25, 11, 1);
+            border-radius:100px;
+            transition: all 0.3s ease;
+        }
+        .anchor_tags a{
+            text-decoration:none;
+            color:rgb(25, 11, 1);
+            transition: color 0.3s ease;
+        }
+
+        .anchor_tags span:hover {
+            background-color: rgb(252, 193, 85);
+        }
+
+        .anchor_tags span:hover a {
+            color: #1c1c1c;
+        }
+
+        .hero {
+        height: 320px;
+        overflow: visible;
+        position:relative;
+        text-align:center;
+        margin-bottom:100px;
+        }
+
+        .hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        object-position: center;
+        }
+        .text-overlay{
+          position: absolute;
+          top: 90%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border-radius:30px;
+          padding:10px 40px;
+          border:1px solid rgb(25, 11, 1);
+          background-color:rgb(243, 232, 216);
+          box-shadow: 0 10px 18px rgba(0, 0, 0, 0.4);
+
+        }
+
+        ul{
+            list-style-type: none;
+            padding:0;
+        }
+        .menu{
+          display:flex;
+          flex-direction:column;
+          margin: 0 200px;
+        }
+        .dinner, .brunch, .cocktails{
+            display:flex;
+            flex-direction: row;
+            gap:30px;
+        }
+        .dinner_left, .dinner_right, .brunch_left, .brunch_right,.cocktails_left,.cocktails_right{
+            flex: 1;
+        }
+        .dish_name, .price{
+            font-weight:bold;
+            font-size:18px;
+        }
+        li p{
+            display:flex;
+            justify-content: space-between;
+        }
+        .dinner_cold, .dinner_snack, .dinner_small,.dinner_large, 
+        .cocktails_left, .cocktails_right, .brunch_left, .brunch_right{
+            margin-bottom:30px;
+            border:1px solid rgb(25, 11, 1);
+            border-radius:30px;
+            padding:30px;
+            box-shadow:2px 2px 8px rgba(0, 0, 0, 0.4);
+            background-color:rgb(243, 232, 216);
+            height:480px;
+        }
+        .cocktails_left, .cocktails_right{
+            height:380px;
+        }
+        .dinner h4, .brunch h4{
+            font-size:28px;
+            text-align: center;
+            font-family: "adobe-handwriting-ernie", sans-serif;
+            margin:4px;
+        }
+        .line{
+            border-bottom:1px dotted rgb(25, 11, 0.5);
+            flex:1 1 auto;
+            transform:translateY(-10px);
+            margin:0 6px;
+        }
+        .footer {
+            background-color: #1c1c1c;
+            color: #f4f4f4;
+            display: flex;
+            justify-content: center;  
+            gap:200px;
+            align-items: flex-start;
+            padding: 60px 100px;
+            margin-top:60px;
+            gap: -10px;
+            flex-wrap: wrap;
+          }
+
+          .footer h4 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+          }
+
+          .footer p {
+            font-size: 16px;
+            color: #d6d6d6;
+          }
+          .map iframe {
+            width: 400px;
+            height: 250px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+          }
+          @media (max-width: 900px){
+            .dinner, .brunch, .cocktails{
+              flex-direction: column;
+            }
+            .footer{
+              gap:20px;
+            }
+          }
+    </style>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="hero">
+        <img src="yellowbelly1.jpg" alt="image of restaurant">
+        <div class="text-overlay">
+          <h1 id="title">Yellowbelly Menu</h1>
+        </div>
+    </div>
+    <div class="anchor_tags">
+        <span><a href="#dinner">Dinner</a></span>
+        <span><a href="#brunch">Brunch</a></span>
+        <span><a href="#cocktails">Cocktails</a></span>
+    </div>
+<div class="menu">
+
+  <!-- ================= DINNER ================= -->
+  <h2 class="subtitle" id="dinner">Dinner</h2>
+  <div class="dinner">
+    <div class="dinner_left">
+      <div class="dinner_cold">
+        <h4>Cold</h4>
+        <ul>
+          <li><p><span class="dish_name">Raw Oysters</span><span class="line"></span><span class="price">$4 / ea.</span></p></li>
+          <i>kimchi water & pickled daikon -OR- pineapple tepache, chili flake, lime (gf)</i>
+
+          <li><p><span class="dish_name">Salmon Tostada</span><span class="line"></span><span class="price">$18</span></p></li>
+          <i>raw salmon, avocado, seaweed, cabbage, sesame, soy, sudachi vin</i>
+
+          <li><p><span class="dish_name">Caesar Salad</span><span class="line"></span><span class="price">$12</span></p></li>
+          <i>napa cabbage, butter lettuce, manchego, togarashi, hawaiian sesame croutons</i>
+
+          <li><p><span class="dish_name">Beet Salad</span><span class="line"></span><span class="price">$14</span></p></li>
+          <i>pickled candy cane & golden beets, mizuna greens, citrus vin, masala walnuts, grapefruit supremes, cotija crema</i>
+        </ul>
+      </div>
+      <div class="dinner_snack">
+      <h4>Snack</h4>
+      <ul>
+        <li><p><span class="dish_name">Nashville Hot Fried Oysters</span><span class="line"></span><span class="price">$4 / ea.</span></p></li>
+        <i>pickles, hot sauce, mayo</i>
+
+        <li><p><span class="dish_name">Grilled Salmon Skewers</span><span class="line"></span><span class="price">$13</span></p></li>
+        <i>gochujang glaze, green papaya salad, thai-chili lemongrass vinaigrette, roasted peanut</i>
+
+        <li><p><span class="dish_name">Cheddar Biscuits</span><span class="line"></span><span class="price">$8</span></p></li>
+        <i>umami shrimp butter</i>
+
+        <li><p><span class="dish_name">Hand-cut Beef Fat French Fries</span><span class="line"></span><span class="price">$10</span></p></li>
+        <i>pickles, hot sauce, mayo</i>
+      </ul>
+      </div>
+    </div>
+
+    <div class="dinner_right">
+        <div class="dinner_small">
+            <h4>Small Plates</h4>
+            <ul>
+                <li><p><span class="dish_name">Warm Mini Lobster Roll</span><span class="line"></span><span class="price">$22</span></p></li>
+                <i>drawn sherry butter, pickled fennel seed, black sesame hawaiian roll</i>
+
+                <li><p><span class="dish_name">Brussels Sprouts</span><span class="line"></span><span class="price">$14</span></p></li>
+                <i>fish sauce, thai chili, lime, granny smith apple kimchi, roasted peanuts (vg upon request)</i>
+
+                <li><p><span class="dish_name">Charred Carrots</span><span class="line"></span><span class="price">$18</span></p></li>
+                <i>chimichurri, toasted macadamia nuts, eel sauce (v)</i>
+
+                <li><p><span class="dish_name">Chili-glazed Pork Belly</span><span class="line"></span><span class="price">$18</span></p></li>
+                <i>house kimchi, ozark forest mushrooms, jasmine rice, spicy mayo</i>
+            </ul>
+        </div>
+        <div class="dinner_large">
+            <h4>Large Plates</h4>
+            <ul>
+                <li><p><span class="dish_name">Chorizo &amp; Broccolini Tamales</span><span class="line"></span><span class="price">$26</span></p></li>
+                <i>impossible chorizo, bell pepper, broccolini, cashew queso, pibil, tomatillo salsa (vg, gf)</i>
+
+                <li><p><span class="dish_name">Seared Scallops</span><span class="line"></span><span class="price">$40</span></p></li>
+                <i>three sea scallops, sweet corn grits, chili glazed pork belly, mojo verde</i>
+
+                <li><p><span class="dish_name">Moroccan Spiced Grouper</span><span class="line"></span><span class="price">$50</span></p></li>
+                <i>couscous, broccolini, blistered cherry tomatoes, chermoula butter, pistachio dukkah, spanish chorizo</i>
+
+                <li><p><span class="dish_name">Grilled Salmon</span><span class="line"></span><span class="price">$33</span></p></li>
+                <i>spicy green thai curry, jasmine rice, parsnip, peppers, turmeric crunchies (gf)</i>
+            </ul>
+        </div>
+    </div>
+  </div>
+
+  <!-- ================= BRUNCH ================= -->
+  <h2 class="subtitle" id="brunch">Brunch</h2>
+  <div class="brunch">
+
+    <div class="brunch_left">
+      <h4>Breakfast &nbspClassics</h4>
+      <ul>
+        <li><p><span class="dish_name">Full Breakfast</span><span class="line"></span><span class="price">$18</span></p></li>
+        <i>two cheddar eggs, breakfast potatoes, choice of protein, biscuit, tropical fruit</i>
+
+        <li><p><span class="dish_name">Coconut-Pecan Brioche French Toast</span><span class="line"></span><span class="price">$11</span></p></li>
+        <i>spiced rum whipped cream, berries</i>
+
+        <li><p><span class="dish_name">Fried Chicken &amp; French Toast</span><span class="line"></span><span class="price">$18</span></p></li>
+        <i>maple glazed fried chicken, toasted coconut-pecan brioche french toast</i>
+
+        <li><p><span class="dish_name">Shrimp &amp; Grits</span><span class="line"></span><span class="price">$18</span></p></li>
+        <i>sweet corn grits, BBQ butter, andouille sausage (gf)</i>
+      </ul>
+    </div>
+
+    <div class="brunch_right">
+      <h4>Brunchables</h4>
+      <ul>
+        <li><p><span class="dish_name">Steak &amp; Cheddar Burrito</span><span class="line"></span><span class="price">$18</span></p></li>
+        <i>flank steak, aged cheddar, breakfast potatoes, scrambled eggs, charred salsa, cheddar-jalapeño tortilla, guacamole</i>
+
+        <li><p><span class="dish_name">Chorizo &amp; Broccolini Tamales</span><span class="line"></span><span class="price">$26</span></p></li>
+        <i>impossible chorizo, bell pepper, broccolini, cashew queso, pibil, tomatillo salsa (vg, gf)</i>
+
+        <li><p><span class="dish_name">Lobster Enchiladas</span><span class="line"></span><span class="price">$22</span></p></li>
+        <i>salsa verde, smoked tomato, pickled jalapeño, fried egg, poblano crema (gf)</i>
+
+        <li><p><span class="dish_name">Rum Battered Cod</span><span class="line"></span><span class="price">$16</span></p></li>
+        <i>creole tartar sauce, cabbage slaw</i>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================= COCKTAILS ================= -->
+  <h2 class="subtitle" id="cocktails">Cocktails</h2>
+  <div class="cocktails">
+
+    <div class="cocktails_left">
+      <ul>
+        <li><p><span class="dish_name">Yellowbelly</span><span class="line"></span><span class="price">$14</span></p></li>
+        <i>YB secret rum blend, pineapple, coconut, ginger, turmeric, lime</i>
+
+        <li><p><span class="dish_name">Lazy Tiger</span><span class="line"></span><span class="price">$14</span></p></li>
+        <i>mezcal, orange, tajin, serrano, honey, lime</i>
+
+        <li><p><span class="dish_name">Lion's Share</span><span class="line"></span><span class="price">$14</span></p></li>
+        <i>bourbon, miso orgeat, passion fruit, sherry, lime</i>
+
+        <li><p><span class="dish_name">Domo Arigato Matcha Roboto</span><span class="line"></span><span class="price">$14</span></p></li>
+        <i>reposado tequila, matcha, coconut, lemongrass, lime, strawberry bitters</i>
+      </ul>
+    </div>
+
+    <div class="cocktails_right">
+      <ul>
+        <li><p><span class="dish_name">Escape from Black Cat Mountain</span><span class="line"></span><span class="price">$14</span></p></li>
+        <i>jamaican rum, pistachio, blackberry, amaro, lime</i>
+
+        <li><p><span class="dish_name">Saturn</span><span class="line"></span><span class="price">$14</span></p></li>
+        <i>gin, passion fruit, almond, falernum, lemon</i>
+
+        <li><p><span class="dish_name">Concrete Jungle</span><span class="line"></span><span class="price">$14</span></p></li>
+        <i>tequila, grapefruit, bitter, lime, sparkling lambrusco</i>
+
+        <li><p><span class="dish_name">Frozen Piña Colada</span><span class="line"></span><span class="price">$14</span></p></li>
+        <i>aged rum, coconut, sherry, pineapple, lime</i>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<div class="footer">
+  <div class="open_hours">
+    <h4>Opening Hours</h4>
+    <p><strong>Tuesday – Thursday:</strong> 5–9pm</p>
+    <p><strong>Friday:</strong> 5–11pm</p>
+    <p><strong>Saturday:</strong> 10am–2pm, 5–11pm</p>
+    <p><strong>Sunday – Monday:</strong> Closed</p>    
+  </div>
+  <div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3116.2319762685092!2d-90.26411922430616!3d38.64354607177941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87d8b5f980d65aab%3A0x9d9d5b5f0c9dac1f!2sYellowbelly!5e0!3m2!1sen!2sus!4v1770866804971!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
+
+</body>
