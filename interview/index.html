@@ -7,195 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --black:#0a0a0a;
-  --deep:#0f0f0f;
-  --panel:#141414;
-  --border:#2a2a2a;
-  --dim:#1e1e1e;
-  --white:#f0ece4;
-  --offwhite:#ccc6ba;
-  --muted:#6b6560;
-  --red:#e63022;
-  --amber:#d4922a;
-  --amber-glow:rgba(212,146,42,0.13);
-  --font-head:'Playfair Display',serif;
-  --font-body:'Spectral',serif;
-  --font-mono:'Space Mono',monospace;
-}
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:18px;line-height:1.75;cursor:none;overflow-x:hidden}
-::selection{background:var(--amber);color:var(--black)}
-
-/* CURSOR */
-#cd{position:fixed;width:6px;height:6px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .15s,height .15s}
-#cr{position:fixed;width:36px;height:36px;border:1px solid rgba(212,146,42,.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s}
-
-/* GRAIN + SCANLINES */
-.grain-layer{position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:200px;animation:gShift .8s steps(2) infinite}
-@keyframes gShift{0%{transform:translate(0,0)}25%{transform:translate(-2px,1px)}50%{transform:translate(2px,-1px)}75%{transform:translate(-1px,2px)}}
-.scanlines{position:fixed;inset:0;pointer-events:none;z-index:199;background:repeating-linear-gradient(to bottom,transparent 0px,transparent 3px,rgba(0,0,0,.18) 3px,rgba(0,0,0,.18) 4px);opacity:.35}
-
-/* LOADER */
-#loader{position:fixed;inset:0;z-index:9000;background:var(--black);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;transition:opacity .8s ease .2s,visibility .8s ease .2s}
-#loader.out{opacity:0;visibility:hidden}
-.clapper-wrap{width:200px}
-.clapper-top{height:40px;background:var(--deep);border:2px solid #333;border-bottom:none;display:flex;align-items:center;padding:0 12px;gap:6px;transform-origin:left center;animation:cSnap .3s ease 1.6s both}
-.cs{flex:1;height:16px;background:repeating-linear-gradient(90deg,#111 0px,#111 8px,#eee 8px,#eee 16px)}
-.clapper-body{height:110px;background:var(--deep);border:2px solid #333;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;position:relative;overflow:hidden}
-.cb-stripe{position:absolute;inset:0;background:repeating-linear-gradient(-45deg,#000 0,#000 10px,#fff 10px,#fff 20px);opacity:.05}
-.cb-text{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;position:relative;z-index:1;text-align:center}
-.cb-text strong{display:block;color:var(--amber);font-size:13px;margin-top:6px;letter-spacing:.15em}
-.loader-sub{font-family:var(--font-mono);font-size:10px;letter-spacing:.25em;color:var(--muted);text-transform:uppercase;animation:fIn .5s ease 1s both}
-@keyframes cSnap{0%{transform:rotate(-45deg)}70%{transform:rotate(5deg)}100%{transform:rotate(0)}}
-@keyframes fIn{from{opacity:0}to{opacity:1}}
-@keyframes fUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes hReveal{from{opacity:0;transform:translateY(40px) skewY(1deg)}to{opacity:1;transform:translateY(0) skewY(0)}}
-@keyframes spinReel{to{transform:translateY(-50%) rotate(360deg)}}
-
-/* NAV */
-nav{position:fixed;top:36px;left:0;right:0;z-index:150;display:flex;justify-content:space-between;align-items:center;padding:14px 48px;border-bottom:1px solid transparent;transition:background .4s,border-color .4s,backdrop-filter .4s}
-nav.sc{background:rgba(10,10,10,.88);border-color:var(--border);backdrop-filter:blur(12px)}
-.nl{font-family:var(--font-mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber)}
-.nlinks{display:flex;gap:32px;font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;list-style:none}
-.nlinks a{color:var(--muted);text-decoration:none;transition:color .2s;position:relative}
-.nlinks a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .3s}
-.nlinks a:hover{color:var(--white)}
-.nlinks a:hover::after{transform:scaleX(1)}
-.nr{font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;color:var(--muted)}
-
-/* HERO */
-.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 80px;border-bottom:1px solid var(--border)}
-.reel-bg{position:absolute;right:-180px;top:50%;transform:translateY(-50%);width:680px;height:680px;pointer-events:none;animation:spinReel 45s linear infinite;opacity:.06}
-.proj-beam{position:absolute;top:0;left:9%;width:1px;height:100%;background:linear-gradient(to bottom,transparent 0%,rgba(212,146,42,.07) 20%,rgba(212,146,42,.14) 50%,rgba(212,146,42,.07) 80%,transparent 100%);pointer-events:none}
-.proj-beam::before{content:'';position:absolute;top:0;left:-50px;width:100px;height:100%;background:linear-gradient(to bottom,transparent,rgba(212,146,42,.025),transparent);clip-path:polygon(50% 0%,0% 100%,100% 100%)}
-.tc-bar{position:absolute;top:106px;left:0;right:0;display:flex;align-items:center;gap:0;padding:0 48px;font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;color:var(--muted);opacity:.45}
-.tc-sep{margin:0 14px;opacity:.3}
-
-/* Frame corners */
-.fc{position:absolute;width:24px;height:24px;border-color:var(--amber);border-style:solid;opacity:.4}
-.fc.tl{top:82px;left:24px;border-width:1px 0 0 1px}
-.fc.tr{top:82px;right:24px;border-width:1px 1px 0 0}
-.fc.bl{bottom:62px;left:24px;border-width:0 0 1px 1px}
-.fc.br{bottom:62px;right:24px;border-width:0 1px 1px 0}
-
-.hero-inner{position:relative;z-index:10;padding:0 48px}
-.hero-over{font-family:var(--font-mono);font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--amber);margin-bottom:24px;display:flex;align-items:center;gap:16px;opacity:0;animation:fUp .6s ease 2s forwards}
-.hero-over::before{content:'';width:40px;height:1px;background:var(--amber)}
-.hero-title{font-family:var(--font-head);font-weight:900;font-size:clamp(72px,12vw,200px);line-height:.9;letter-spacing:-.01em;margin-bottom:40px;opacity:0;animation:hReveal .9s cubic-bezier(.16,1,.3,1) 2.1s forwards}
-.ht1{display:block}
-.ht2{display:block;-webkit-text-stroke:1.5px var(--white);color:transparent;padding-left:clamp(40px,8vw,120px)}
-.ht3{display:block;font-style:italic;font-weight:400;font-size:clamp(38px,5.5vw,96px);color:var(--amber);padding-left:clamp(80px,15vw,220px)}
-.hero-meta{display:flex;align-items:flex-end;gap:48px;opacity:0;animation:fUp .6s ease 2.5s forwards}
-.hero-desc{max-width:400px;font-size:15px;line-height:1.7;color:var(--offwhite);font-style:italic;border-left:2px solid var(--red);padding-left:20px}
-.hero-chips{display:flex;flex-direction:column;gap:8px;margin-left:auto}
-.chip{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);padding:6px 14px}
-.sc-ctr{position:absolute;bottom:80px;right:48px;font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.sc-ctr .scn{font-family:var(--font-head);font-size:64px;font-weight:900;color:var(--border);line-height:1}
-
-/* SECTIONS */
-section{padding:120px 48px;border-bottom:1px solid var(--border)}
-.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:12px;margin-bottom:20px}
-.sec-label::before{content:'';width:28px;height:1px;background:var(--red)}
-.sec-title{font-family:var(--font-head);font-size:clamp(40px,6vw,80px);font-weight:900;line-height:.95;letter-spacing:-.02em;margin-bottom:64px}
-
-/* INTRO */
-.intro-grid{display:grid;grid-template-columns:1fr 1.8fr;gap:80px;align-items:start}
-.photo-card{position:sticky;top:120px}
-.photo-well{aspect-ratio:3/4;background:var(--panel);border:1px solid var(--border);position:relative;overflow:hidden}
-.photo-well-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--muted)}
-.photo-well::before,.photo-well::after{content:'';position:absolute;z-index:2;width:20px;height:20px;border-color:var(--amber);border-style:solid;opacity:.6}
-.photo-well::before{top:10px;left:10px;border-width:1px 0 0 1px}
-.photo-well::after{bottom:10px;right:10px;border-width:0 1px 1px 0}
-.ph-icon{width:60px;opacity:.35}
-.ph-hint{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.35}
-.photo-meta{margin-top:14px;font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:12px}
-.intro-bio{font-size:clamp(16px,1.8vw,20px);font-style:italic;color:var(--offwhite);line-height:1.85;margin-bottom:52px}
-.intro-bio strong{font-style:normal;color:var(--white)}
-.dtable{border-collapse:collapse;width:100%;margin-bottom:52px}
-.dtable tr{border-bottom:1px solid var(--border)}
-.dtable td{padding:14px 0;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em}
-.dtable td:first-child{color:var(--muted);text-transform:uppercase;width:42%}
-.inf-title{font-family:var(--font-mono);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-.inf-list{display:flex;flex-wrap:wrap;gap:8px}
-.inf-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;border:1px solid var(--border);color:var(--offwhite);padding:6px 14px;cursor:default;transition:border-color .2s,color .2s,background .2s}
-.inf-tag:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-glow)}
-
-/* QUOTES */
-.quotes-sec{background:var(--deep);position:relative;overflow:hidden}
-.q-bg-txt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-head);font-size:28vw;font-weight:900;color:rgba(255,255,255,.012);white-space:nowrap;pointer-events:none;user-select:none}
-.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:2px;position:relative;z-index:1}
-.qcard{background:var(--panel);padding:52px 48px;border:1px solid var(--border);position:relative;overflow:hidden;transition:border-color .3s,background .3s}
-.qcard:hover{border-color:rgba(212,146,42,.38);background:#161610}
-.qcard::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(212,146,42,.13) 0%,transparent 60%);opacity:0;transition:opacity .3s}
-.qcard:hover::before{opacity:1}
-.qcard-num{font-family:var(--font-mono);font-size:9px;letter-spacing:.25em;color:var(--red);text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:10px}
-.qcard-num::after{content:'';flex:1;height:1px;background:var(--border)}
-.qcard blockquote{font-family:var(--font-head);font-style:italic;font-size:clamp(17px,2.1vw,26px);line-height:1.45;color:var(--white);margin-bottom:24px}
-.qcard.hq{grid-column:span 2}
-.qcard.hq blockquote{font-size:clamp(22px,3.2vw,44px)}
-.qcard-cite{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.qcard-stripe{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--amber));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
-.qcard:hover .qcard-stripe{transform:scaleX(1)}
-
-/* TRANSCRIPT */
-.ts-sec{max-width:860px;margin:0 auto;padding:120px 48px}
-.ts-head{font-size:13px;font-family:var(--font-mono);letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:64px;padding:20px;border:1px solid var(--border);display:flex;align-items:center;gap:20px}
-.ts-head::before{content:'REC';background:var(--red);color:#fff;font-size:9px;padding:4px 8px;letter-spacing:.2em;flex-shrink:0;animation:blink 1.4s ease infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.qa-item{padding:40px 0;border-top:1px solid var(--border);position:relative}
-.qa-item:last-child{border-bottom:1px solid var(--border)}
-.qa-scene{font-family:var(--font-mono);font-size:8px;letter-spacing:.25em;color:var(--border);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.qa-scene::after{content:'';flex:1;height:1px;background:var(--border)}
-.qa-q,.qa-a{display:flex;gap:20px;align-items:flex-start}
-.qa-q{margin-bottom:20px}
-.spk{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;border:1px solid var(--border);color:var(--muted);margin-top:4px}
-.spk.sa{background:var(--amber);border-color:var(--amber);color:var(--black);font-weight:700}
-.qa-q p{font-family:var(--font-body);font-size:16px;color:var(--muted);line-height:1.75;padding-top:6px}
-.qa-a p{font-family:var(--font-body);font-size:clamp(15px,1.6vw,18px);color:var(--white);line-height:1.85;font-style:italic;padding-top:6px}
-.qa-a p em{font-style:normal;color:var(--amber)}
-.qa-pull{margin:28px 0;padding:20px 24px;border-left:3px solid var(--amber);background:var(--amber-glow);font-family:var(--font-head);font-style:italic;font-size:clamp(17px,2vw,22px);color:var(--white);line-height:1.5}
-
-/* FOOTER */
-footer{background:var(--deep);padding:80px 48px 60px;border-top:1px solid var(--border)}
-.f-reel{display:flex;align-items:center;gap:20px;margin-bottom:48px}
-.f-wm{font-family:var(--font-head);font-size:clamp(48px,8vw,120px);font-weight:900;line-height:.9;-webkit-text-stroke:1px var(--border);color:transparent}
-.f-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;padding-top:40px;border-top:1px solid var(--border);font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
-.f-credits span{margin-right:32px}
-.f-credits span::before{content:'— ';opacity:.3}
-.f-end{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;color:var(--border)}
-
-/* SCROLL REVEAL */
-.rv{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
-.rv.in{opacity:1;transform:none}
-.rvl{opacity:0;transform:translateX(-24px);transition:opacity .6s ease,transform .6s ease}
-.rvl.in{opacity:1;transform:none}
-[data-d="1"]{transition-delay:.1s}[data-d="2"]{transition-delay:.2s}[data-d="3"]{transition-delay:.3s}[data-d="4"]{transition-delay:.4s}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  nav,body{font-size:16px}
-  nav{padding:14px 24px}
-  .tc-bar,.hero-inner{padding-left:24px;padding-right:24px}
-  section{padding:80px 24px}
-  .ts-sec{padding:80px 24px}
-  .intro-grid{grid-template-columns:1fr;gap:48px}
-  .photo-card{position:static}
-  .qgrid{grid-template-columns:1fr}
-  .qcard.hq{grid-column:span 1}
-  .qcard.hq blockquote{font-size:clamp(20px,4vw,28px)}
-  footer{padding:60px 24px 40px}
-  .nlinks{display:none}
-}
-@media(max-width:600px){
-  .hero-title{font-size:clamp(52px,16vw,80px)}
-  .hero-meta{flex-direction:column;gap:24px}
-  .hero-chips{margin-left:0}
-  .sc-ctr{display:none}
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -204,7 +16,7 @@ footer{background:var(--deep);padding:80px 48px 60px;border-top:1px solid var(--
 <div class="grain-layer"></div>
 <div class="scanlines"></div>
 
-<!-- LOADER -->
+<!-- LOADER 
 <div id="loader">
   <div class="clapper-wrap">
     <div class="clapper-top"><div class="cs"></div><div class="cs"></div></div>
@@ -215,7 +27,7 @@ footer{background:var(--deep);padding:80px 48px 60px;border-top:1px solid var(--
   </div>
   <p class="loader-sub">Preparing projection…</p>
 </div>
-
+-->
 <!-- NAV -->
 <nav id="mn">
   <span class="nl">INTERVIEW PROJECT</span>
@@ -371,53 +183,59 @@ footer{background:var(--deep);padding:80px 48px 60px;border-top:1px solid var(--
   <div class="ts-head rv" data-d="2">Recorded 2026 · Lightly edited for clarity and length · Interview conducted in person</div>
 
   <div class="qa-item rv">
-    <div class="qa-scene">Scene 01 — Introduction</div>
-    <div class="qa-q"><div class="spk">Q</div><p>Can you introduce yourself and tell us a bit about what you study?</p></div>
-    <div class="qa-a"><div class="spk sa">CL</div><p>Sure! I'm Chloe, I'm a junior studying Film and Media. I came in thinking I wanted to be a screenwriter, but I've slowly migrated toward directing — realizing that the script is just the beginning of a much longer conversation.</p></div>
+    <div class="qa-scene">Scene 01 — On growing up across cultures</div>
+    <div class="qa-q"><div class="spk">Q</div><p>How have living in different countries shaped the way you observe people and tell stories?</p></div>
+    <div class="qa-a"><div class="spk sa">CL</div><p>Living in different countries really broadened my perspective. It helped me become more open to meeting people and understanding different cultures. I think that’s what made me want to become a storyteller, not just to share my own experiences, but also to listen to other people’s stories, because everyone has something fascinating to tell.</p></div>
   </div>
 
   <div class="qa-item rv">
-    <div class="qa-scene">Scene 02 — Origin</div>
-    <div class="qa-q"><div class="spk">Q</div><p>What drew you to film in the first place?</p></div>
-    <div class="qa-a"><div class="spk sa">CL</div><p>Honestly? A specific scene in a film I watched when I was about twelve — I won't say which one, but it made me cry without fully understanding why. That gap, between the feeling and the explanation — <em>that's what I wanted to explore</em>. Film operates in that space better than almost any other medium.</p></div>
+    <div class="qa-scene">Scene 02 — On discovering filmmaking</div>
+    <div class="qa-q"><div class="spk">Q</div><p>When did you realize you were interested in media?</p></div>
+    <div class="qa-a"><div class="spk sa">CL</div><p>It started in high school when I took my first filmmaking class. I didn’t expect much, but my first film ended up being selected for a festival. That experience gave me a lot of confidence and made me feel like this was something I could actually pursue.</p></div>
   </div>
 
   <div class="qa-item rv">
-    <div class="qa-scene">Scene 03 — Academic Formation</div>
-    <div class="qa-q"><div class="spk">Q</div><p>How has your academic experience shaped your approach to filmmaking?</p></div>
-    <div class="qa-a"><div class="spk sa">CL</div><p>It's given me a critical vocabulary I didn't have before. Understanding the male gaze, understanding how editing constructs meaning, how sound design is never neutral — these concepts rewired how I watch films. And once you can't unsee something, it changes how you make things too.</p></div>
-    <div class="qa-pull rv">"Once you can't unsee something, it changes how you make things too."</div>
+    <div class="qa-scene">Scene 03 — On what makes film meaningful</div>
+    <div class="qa-q"><div class="spk">Q</div><p>What makes film and media meaningful to you?</p></div>
+    <div class="qa-a"><div class="spk sa">CL</div><p>I love film because it allows me to tell stories that matter to me, like my immigration experience or promoting women in golf. It’s powerful because it combines visuals and emotion, people can see it, feel it, and connect to it in a deeper way.</p></div>
+    <div class="qa-pull rv">"People can see it, feel it, and connect to it in a deeper way."</div>
   </div>
 
   <div class="qa-item rv">
-    <div class="qa-scene">Scene 04 — Representation</div>
-    <div class="qa-q"><div class="spk">Q</div><p>You mentioned representation. Is that a theme in your own work?</p></div>
-    <div class="qa-a"><div class="spk sa">CL</div><p>Absolutely. Growing up, I noticed the stories that were missing. Not just Asian American stories, but a certain kind of quiet, interior, unglamorous story. I want to make films that <em>ask questions, not hand you the answers</em>. My short film last semester was about a woman deciding whether or not to call her estranged mother — it was twelve minutes long and nothing "happened," but I was more proud of it than anything else I've made.</p></div>
+    <div class="qa-scene">Scene 04 — On the power of visual storytelling</div>
+    <div class="qa-q"><div class="spk">Q</div><p>What makes visual storytelling powerful compared to writing?</p></div>
+    <div class="qa-a"><div class="spk sa">CL</div><p>I think editing and framing are what make it powerful. The way you arrange clips, the pacing, and what you choose to show first all shape how the audience feels. There’s a lot of intention behind every decision.</p></div>
   </div>
 
   <div class="qa-item rv">
-    <div class="qa-scene">Scene 05 — Influences</div>
-    <div class="qa-q"><div class="spk">Q</div><p>What filmmakers are you most inspired by?</p></div>
-    <div class="qa-a"><div class="spk sa">CL</div><p>Agnès Varda, always. She made you feel like the camera was her hand reaching out to touch something. Chloé Zhao for how she blends documentary and fiction. And Wong Kar-wai — the way memory works in his films, as something slippery and beautiful and painful all at once. I watch <em>In the Mood for Love</em> at least once a semester. Every time it teaches me something new.</p></div>
+    <div class="qa-scene">Scene 05 — On documentary vs. creative film</div>
+    <div class="qa-q"><div class="spk">Q</div><p>How do you decide what the audience should focus on?</p></div>
+    <div class="qa-a"><div class="spk sa">CL</div><p>For documentaries, I focus on the message, what I want the audience to learn or think about afterward. For creative films, it’s more open. I like that audiences can interpret things in their own way.</p></div>
   </div>
 
   <div class="qa-item rv">
-    <div class="qa-scene">Scene 06 — Industry &amp; Anxiety</div>
-    <div class="qa-q"><div class="spk">Q</div><p>What's the hardest part of being a film student right now?</p></div>
-    <div class="qa-a"><div class="spk sa">CL</div><p>The industry feels like it's in this chaotic, uncertain place — streaming wars, the strikes, AI, all of it. There's a lot of anxiety about whether there's room for the kind of slow, personal cinema I care about. But then I remind myself: <em>people have always said cinema is dying, and it keeps reinventing itself</em>. I'd rather be part of that reinvention than opt out of it.</p></div>
-    <div class="qa-pull rv">"People have always said cinema is dying, and it keeps reinventing itself."</div>
+    <div class="qa-scene">Scene 06 — On the filmmaking process</div>
+    <div class="qa-q"><div class="spk">Q</div><p>What does your creative process look like?</p></div>
+    <div class="qa-a"><div class="spk sa">CL</div><p>It starts with an idea, but you also have to think about resources like time, budget, and people. Then comes scripting, planning shots, organizing logistics, filming, and finally editing, which is my favorite part. It usually takes multiple revisions before it feels complete.</p></div>
+    <div class="qa-pull rv">"It usually takes multiple revisions before it feels complete."</div>
   </div>
 
   <div class="qa-item rv">
-    <div class="qa-scene">Scene 07 — The Hope</div>
-    <div class="qa-q"><div class="spk">Q</div><p>What do you hope people take away from your films?</p></div>
-    <div class="qa-a"><div class="spk sa">CL</div><p>Just that feeling I described earlier. <em>Film isn't just what you see on screen — it's the feeling that stays with you after the lights come back on.</em> If someone walks away from one of my films and feels less alone, or sees something in themselves they hadn't named before, that's everything.</p></div>
+    <div class="qa-scene">Scene 07 — On overcoming creative blocks</div>
+    <div class="qa-q"><div class="spk">Q</div><p>How do you deal with getting stuck creatively?</p></div>
+    <div class="qa-a"><div class="spk sa">CL</div><p>Sometimes I just take a break and come back later. Setting my own deadlines also helps, because filmmaking doesn’t always have strict timelines, you have to motivate yourself to keep going</p></div>
   </div>
 
   <div class="qa-item rv">
-    <div class="qa-scene">Scene 08 — What's Next</div>
-    <div class="qa-q"><div class="spk">Q</div><p>Any projects coming up you're excited about?</p></div>
-    <div class="qa-a"><div class="spk sa">CL</div><p>I'm in pre-production on my thesis film. It's set in a laundromat — again, nothing "happens," but I think it's the most ambitious thing I've written. And I'm applying to some summer programs. <em>Fingers crossed.</em></p></div>
+    <div class="qa-scene">Scene 08 — On combining different media skills</div>
+    <div class="qa-q"><div class="spk">Q</div><p>How do your roles in photography, writing, and marketing influence each other?</p></div>
+    <div class="qa-a"><div class="spk sa">CL</div><p>They’re all connected. Photography helps with visual composition in film, and marketing teaches you how to present content effectively. Even short-form videos like TikToks combine storytelling and visual skills.</p></div>
+  </div>
+
+  <div class="qa-item rv">
+    <div class="qa-scene">Scene 09 — On adapting to different audiences</div>
+    <div class="qa-q"><div class="spk">Q</div><p>How do you adjust your visual approach for different formats?</p></div>
+    <div class="qa-a"><div class="spk sa">CL</div><p>It really depends on the purpose. For example, sports photography needs a fast shutter speed to capture motion, while TikTok videos focus more on creativity and grabbing attention. You have to understand what works best for each medium.</p></div>
   </div>
 </section>
 
@@ -425,7 +243,9 @@ footer{background:var(--deep);padding:80px 48px 60px;border-top:1px solid var(--
 <section id="behind_the_scenes">
   <div class="sec-label rv">Behind the Scenes</div>
   <h2 class="sec-title rv" data-d="1">Making of the Interview</h2>
-  <p><span>Interview Guide</span> <span>Full Transcript</span> <span>Audio</span></p>
+  <p><a href="https://docs.google.com/document/d/1-95ReOBAZpj1TmpwKQbXvpFyMzD_kMniDuYgN6zmCyY/edit?usp=sharing" target="_blank">Interview Plan</a></p>
+  <p><a href="https://docs.google.com/document/d/1-95ReOBAZpj1TmpwKQbXvpFyMzD_kMniDuYgN6zmCyY/edit?usp=sharing" target="_blank">Full Transcript</a></p>
+  <p><a href="Interview with Chloe.m4a" target="_blank">Audio</a></p>
 </section>
 <!-- FOOTER -->
 <footer>
@@ -449,50 +269,6 @@ footer{background:var(--deep);padding:80px 48px 60px;border-top:1px solid var(--
     <div class="f-end">END OF ROLL ◆</div>
   </div>
 </footer>
-
-<script>
-// LOADER
-window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('out')},2200)});
-
-// TIMECODE
-const tcEl=document.getElementById('tc');
-let fr=0;
-setInterval(()=>{
-  fr++;
-  const f=fr%24,s=Math.floor(fr/24)%60,m=Math.floor(fr/1440)%60,h=Math.floor(fr/86400);
-  const p=n=>String(n).padStart(2,'0');
-  if(tcEl) tcEl.textContent=`${p(h)}:${p(m)}:${p(s)}:${p(f)}`;
-},41.67);
-
-// NAV
-const nav=document.getElementById('mn');
-window.addEventListener('scroll',()=>{nav.classList.toggle('sc',scrollY>60)},{passive:true});
-
-// SCROLL REVEAL
-const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv,.rvl').forEach(el=>ro.observe(el));
-
-// CURSOR
-const cd=document.getElementById('cd'),cr=document.getElementById('cr');
-let rx=0,ry=0,mx=0,my=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cd.style.left=mx+'px';cd.style.top=my+'px';
-});
-(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop)})();
-document.querySelectorAll('a,.qcard,.qa-item').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cd.style.width='10px';cd.style.height='10px';cr.style.width='54px';cr.style.height='54px';cr.style.borderColor='var(--amber)'});
-  el.addEventListener('mouseleave',()=>{cd.style.width='6px';cd.style.height='6px';cr.style.width='36px';cr.style.height='36px';cr.style.borderColor='rgba(212,146,42,.45)'});
-});
-
-// QUOTE SPOTLIGHT
-document.querySelectorAll('.qcard').forEach(c=>{
-  c.addEventListener('mousemove',e=>{
-    const r=c.getBoundingClientRect();
-    c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
-    c.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
-  });
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
