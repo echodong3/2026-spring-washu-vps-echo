@@ -675,6 +675,18 @@ function setupZodiacWheel() {
   updateSelectedFromRotation(true);
 }
 
+function renderMockups() {
+  const page = document.getElementById("mockups");
+  page.innerHTML = `
+    <div class="section-kicker">Physical Mockups</div>
+    <h2 class="section-title">Mockups</h2>
+    <p class="section-copy">Physical mockup of constellation cards</p>
+    <div class="mockup-container">
+      <img src="mockup.png" alt="Project mockup" class="mockup-image" onerror="this.alt='mockup.png not found'; this.style.opacity=0.35;" />
+    </div>
+  `;
+}
+
     function renderAbout() {
       const page = document.getElementById("about");
       page.innerHTML = `

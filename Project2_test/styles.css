@@ -219,6 +219,21 @@
       max-width: 760px;
     }
 
+    .mockup-container {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mockup-image {
+      width: min(100%, 520px);
+      height: auto;
+      border-radius: 18px;
+      border: 1px solid var(--soft-line);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    }
+
     .two-col {
       display: grid;
       grid-template-columns: 320px 1fr;
