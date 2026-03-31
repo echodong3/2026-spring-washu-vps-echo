@@ -552,7 +552,7 @@ function renderZodiac() {
     <div class="section-kicker">Interactive circular map</div>
     <h2 class="section-title">Zodiac Signs</h2>
     <p class="section-copy">
-      Drag the wheel to rotate through the zodiac. The pointer at the top marks the selected sign.
+      Drag the wheel to rotate through the zodiac.
     </p>
 
     <div class="wheel-wrap">
