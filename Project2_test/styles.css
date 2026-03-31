@@ -405,6 +405,69 @@
       border-radius: 28px;
       background: rgba(6, 10, 20, 0.72);
     }
+    .zodiac-wheel-shell {
+  position: relative;
+  width: min(100%, 640px);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  touch-action: none;
+  user-select: none;
+}
+
+.zodiac-wheel-rotator {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 50%;
+  will-change: transform;
+  cursor: grab;
+}
+
+.zodiac-wheel-rotator.dragging {
+  cursor: grabbing;
+}
+
+.zodiac-wheel-rotator svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.zodiac-pointer {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 22px solid rgba(240, 232, 221, 0.95);
+  filter: drop-shadow(0 0 12px rgba(228,112,33,0.24));
+  z-index: 5;
+  pointer-events: none;
+}
+
+.zodiac-pointer::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(240, 232, 221, 0.95);
+}
+
+[data-zodiac] path {
+  transition: fill 0.25s ease, stroke 0.25s ease;
+}
+
+[data-zodiac]:hover path {
+  fill: rgba(255,255,255,0.07);
+  stroke: rgba(255,255,255,0.28);
+}
 
     .about-grid {
       margin-top: 26px;
