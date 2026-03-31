@@ -3,6 +3,7 @@
       { id: "home", label: "Home" },
       { id: "zodiac", label: "Zodiac Map" },
       { id: "constellations", label: "Constellations" },
+      { id: "mockups", label: "Mockups" },
       { id: "about", label: "About" },
       { id: "glossary", label: "Glossary" }
     ];
@@ -196,20 +197,68 @@ const constellationData = [
   }
 ];
 
-    const zodiacData = [
-      { name: "Aries", symbol: "♈", desc: "Aries marks the beginning of the zodiac, associated with initiative, courage, and the energy of spring." },
-      { name: "Taurus", symbol: "♉", desc: "Taurus represents stability, patience, and connection to the physical world, often linked to growth and abundance." },
-      { name: "Gemini", symbol: "♊", desc: "Gemini symbolizes duality, communication, and curiosity, reflecting the exchange of ideas and relationships." },
-      { name: "Cancer", symbol: "♋", desc: "Cancer is tied to emotion, home, and memory, marking a turning point in the solar year at the summer solstice." },
-      { name: "Leo", symbol: "♌", desc: "Leo represents vitality, confidence, and expression, often associated with the height of summer and the power of the Sun." },
-      { name: "Virgo", symbol: "♍", desc: "Virgo reflects detail, care, and harvest, symbolizing preparation and the balance between effort and reward." },
-      { name: "Libra", symbol: "♎", desc: "Libra stands for balance and harmony, aligned with the autumn equinox where day and night are equal." },
-      { name: "Scorpio", symbol: "♏", desc: "Scorpio represents intensity, transformation, and depth, often linked to cycles of endings and renewal." },
-      { name: "Sagittarius", symbol: "♐", desc: "Sagittarius symbolizes exploration, direction, and knowledge, pointing toward distant horizons." },
-      { name: "Capricorn", symbol: "♑", desc: "Capricorn reflects discipline, endurance, and structure, marking the return of light at the winter solstice." },
-      { name: "Aquarius", symbol: "♒", desc: "Aquarius is associated with change, innovation, and flow, symbolizing ideas that reshape the world." },
-      { name: "Pisces", symbol: "♓", desc: "Pisces represents intuition, connection, and cycles, often seen as a return to origins and continuity." }
-    ];
+const zodiacData = [
+  {
+    name: "Aries",
+    image: "zodiac_symbols/aries.png",
+    desc: "Aries marks the beginning of the zodiac, associated with initiative, courage, and the energy of spring."
+  },
+  {
+    name: "Taurus",
+    image: "zodiac_symbols/taurus.png",
+    desc: "Taurus represents stability, patience, and connection to the physical world, often linked to growth and abundance."
+  },
+  {
+    name: "Gemini",
+    image: "zodiac_symbols/gemini.png",
+    desc: "Gemini symbolizes duality, communication, and curiosity, reflecting the exchange of ideas and relationships."
+  },
+  {
+    name: "Cancer",
+    image: "zodiac_symbols/cancer.png",
+    desc: "Cancer is tied to emotion, home, and memory, marking a turning point in the solar year at the summer solstice."
+  },
+  {
+    name: "Leo",
+    image: "zodiac_symbols/leo.png",
+    desc: "Leo represents vitality, confidence, and expression, often associated with the height of summer and the power of the Sun."
+  },
+  {
+    name: "Virgo",
+    image: "zodiac_symbols/virgo.png",
+    desc: "Virgo reflects detail, care, and harvest, symbolizing preparation and the balance between effort and reward."
+  },
+  {
+    name: "Libra",
+    image: "zodiac_symbols/libra.png",
+    desc: "Libra stands for balance and harmony, aligned with the autumn equinox where day and night are equal."
+  },
+  {
+    name: "Scorpio",
+    image: "zodiac_symbols/scorpio.png",
+    desc: "Scorpio represents intensity, transformation, and depth, often linked to cycles of endings and renewal."
+  },
+  {
+    name: "Sagittarius",
+    image: "zodiac_symbols/sagittarius.png",
+    desc: "Sagittarius symbolizes exploration, direction, and knowledge, pointing toward distant horizons."
+  },
+  {
+    name: "Capricorn",
+    image: "zodiac_symbols/capricorn.png",
+    desc: "Capricorn reflects discipline, endurance, and structure, marking the return of light at the winter solstice."
+  },
+  {
+    name: "Aquarius",
+    image: "zodiac_symbols/aquarius.png",
+    desc: "Aquarius is associated with change, innovation, and flow, symbolizing ideas that reshape the world."
+  },
+  {
+    name: "Pisces",
+    image: "zodiac_symbols/pisces.png",
+    desc: "Pisces represents intuition, connection, and cycles, often seen as a return to origins and continuity."
+  }
+];
 
     const glossaryData = [
       { term: "Constellation", def: "A recognized grouping or region of stars in the sky." },
@@ -248,6 +297,7 @@ const constellationData = [
       if (id === "home") renderHome();
       if (id === "zodiac") renderZodiac();
       if (id === "constellations") renderConstellations();
+      if (id === "mockups") renderMockups();
       if (id === "about") renderAbout();
       if (id === "glossary") renderGlossary();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -454,7 +504,6 @@ function createZodiacWheel() {
     const mid = (start + end) / 2;
     const tx = cx + 205 * Math.cos(mid);
     const ty = cy + 205 * Math.sin(mid);
-
     return `
       <g data-zodiac="${zodiac.name}" data-index="${i}" style="cursor:pointer;">
         <path
@@ -463,16 +512,17 @@ function createZodiacWheel() {
           stroke="rgba(255,255,255,0.16)"
           stroke-width="1.2">
         </path>
-        <text
-          x="${tx}"
-          y="${ty}"
-          text-anchor="middle"
-          fill="rgba(245,241,234,0.92)"
-          font-size="26"
-          dominant-baseline="middle"
+
+        <image
+          href="${zodiac.image}"
+          x="${tx - 24}"
+          y="${ty - 24}"
+          width="48"
+          height="48"
           transform="rotate(${(mid * 180 / Math.PI) + 90}, ${tx}, ${ty})"
+          preserveAspectRatio="xMidYMid meet"
           pointer-events="none"
-        >${zodiac.symbol}</text>
+        />
       </g>
     `;
   }).join("");
@@ -512,9 +562,10 @@ function renderZodiac() {
 
       <div class="zodiac-detail">
         <div class="mini-heading">Selected</div>
-        <h3 style="font-size:2rem; margin-bottom:12px;" id="zodiacName">
-          ${currentZodiac.symbol} ${currentZodiac.name}
-        </h3>
+        <div class="zodiac-selected-head" id="zodiacHead">
+          <img src="${currentZodiac.image}" alt="${currentZodiac.name} symbol" class="zodiac-selected-icon" />
+          <h3 style="font-size:2rem; margin-bottom:0;" id="zodiacName">${currentZodiac.name}</h3>
+        </div>
         <p id="zodiacDesc">${currentZodiac.desc}</p>
       </div>
     </div>
@@ -552,7 +603,15 @@ function setupZodiacWheel() {
 
     const title = document.getElementById("zodiacName");
     const desc = document.getElementById("zodiacDesc");
-    if (title) title.textContent = `${current.symbol} ${current.name}`;
+    if (title) title.textContent = current.name;
+
+    const head = document.getElementById("zodiacHead");
+    if (head) {
+      head.innerHTML = `
+        <img src="${current.image}" alt="${current.name} symbol" class="zodiac-selected-icon" />
+        <h3 style="font-size:2rem; margin-bottom:0;" id="zodiacName">${current.name}</h3>
+      `;
+    }
     if (desc) desc.textContent = current.desc;
   }
 

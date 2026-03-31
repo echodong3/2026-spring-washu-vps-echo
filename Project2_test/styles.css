@@ -460,6 +460,20 @@
   background: rgba(240, 232, 221, 0.95);
 }
 
+.zodiac-selected-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.zodiac-selected-icon {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  opacity: 0.95;
+}
+
 [data-zodiac] path {
   transition: fill 0.25s ease, stroke 0.25s ease;
 }
