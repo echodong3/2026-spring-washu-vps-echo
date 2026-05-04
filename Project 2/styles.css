@@ -88,7 +88,7 @@ footer {
 .page-intro p {
   color: #ccc;
   line-height: 1.8;
-  max-width: 720px;
+  max-width: 100%;
 }
 
 .section-kicker {
