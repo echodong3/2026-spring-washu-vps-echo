@@ -1,3 +1,35 @@
 * {
     box-sizing: border-box;
 }
+
+body.response-page {
+    margin: 0;
+    padding: 48px 20px;
+    color: #1f2933;
+    background: #f8f4e8;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.7;
+}
+
+.response-container {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.response-content p {
+    margin: 0 0 1.25rem;
+}
+
+.response-content strong {
+    color: #344054;
+}
+
+.back-link {
+    color: #253858;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(37, 56, 88, 0.25);
+}
+
+.back-link:hover {
+    border-bottom-color: currentColor;
+}

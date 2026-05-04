@@ -6,65 +6,143 @@
     <title>Echo's Class Website, Spring 2026 at WashU</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        *{
-            margin:0;
-            padding:0;
+        * {
+            box-sizing: border-box;
         }
-        body{
-            text-align:center;
+
+        body {
+            margin: 0;
+            padding: 56px 20px;
+            color: #1f2933;
+            background: #f8f4e8;
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.6;
         }
-        ul{
+
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 36px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #d8cfbd;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(2.4rem, 7vw, 4.5rem);
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        header p {
+            margin: 0;
+            color: #5d6670;
+            font-size: 1.05rem;
+        }
+
+        section {
+            margin: 34px 0;
+        }
+
+        h2 {
+            margin: 0 0 14px;
+            color: #344054;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
             list-style-type: none;
-            line-height:40px;
         }
 
-        ul a{
+        li + li {
+            margin-top: 8px;
+        }
+
+        a {
+            color: #253858;
             text-decoration: none;
+            border-bottom: 1px solid rgba(37, 56, 88, 0.25);
         }
 
-        h1,h2{
-            margin-top:40px;
+        a:hover {
+            color: #111827;
+            border-bottom-color: currentColor;
         }
-        p{
-            margin-bottom:20px;
+
+        .link-list a {
+            display: inline-block;
+            padding: 2px 0;
+        }
+
+        footer {
+            max-width: 760px;
+            margin: 44px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #d8cfbd;
+            color: #6b7280;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <h1>Echo's class website</h1>
-    <p>Welcome to my class website!</p>
-    <hr>
-    <h2>Exercises</h2>
-    <ul>
-        <li><a href="Exercises/profile-card.html">Profile Card</a></li>
-        <li><a href="Exercises/collection-of-things/index.html">Collection of Things</a></li>
-    </ul>
-    <h2>Readings</h2>
-    <ul>
-        <li><a href="reading1.html">Restaurant Websites</a></li>
-        <li><a href="reading2.html">The New Turing Test</a></li>
-        <li><a href="reading3.html">Interconnected - cyborgs and rooms, two versions for the future of computing</a></li>
-        <li><a href="reading4.html">My website is a shifting house next to a river of knowledge. What could yours be?</a></li>
-        <li><a href="reading5.html">The Coming Age of Calm Technology</a></li>
-        <li><a href="reading6.html">Do Artifacts Have Ethics?</a></li>
-        <li><a href="media_response.html">Media Response - Eno</a></li>
-    </ul>
-    <h2>Writing Exercises</h2>
-    <ul>
-        <li><a href="writing_exercise_1.html">Writing Exercise 1</a></li>
-        <li><a href="writing_exercise_2.html">Writing Exercise 2</a></li>
-        <li><a href="writing_exercise_3.html">Writing Exercise 3</a></li>
-        <li><a href="writing_exercise_4.html">Writing Exercise 4</a></li>
-    </ul>
-    <h2>Projects</h2>
-    <ul>
-        <li><a href="Project 1/index.html">Project 1. Restaurant or Café Variations</a></li>
-        <li><a href="Project 2/index.html">Project 2. Book → Website</a></li>
-        <!--<li><a href="Project2_test/index.html">Project 2. Book -> Website</a></li>-->
-        <li><a href="https://www.figma.com/design/VGTIND4H3Seb6EjCLqhy3S/Starlore-of-Constellations?node-id=0-1&t=PFvU2cIK7VmxuIXq-1">Project 2. Figma Design</a></li>
-        <li><a href="https://www.figma.com/design/AQUgv4odoQ9jBAwZNrodUa/Standby?node-id=0-1&t=rWhtLKHVDVyt4lCl-1">Project 3. Standby Mode</a></li>
-        <li><a href="interview/index.html">Interview</a></li>    
-    </ul>
+    <main>
+        <header>
+            <h1>Echo's class website</h1>
+            <p>Visual Principle for the Screen, Spring 2026</p>
+        </header>
+
+        <section>
+            <h2>Exercises</h2>
+            <ul class="link-list">
+                <li><a href="Exercises/profile-card.html">Profile Card</a></li>
+                <li><a href="Exercises/collection-of-things/index.html">Collection of Things</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Readings</h2>
+            <ul class="link-list">
+                <li><a href="reading1.html">Restaurant Websites</a></li>
+                <li><a href="reading2.html">The New Turing Test</a></li>
+                <li><a href="reading3.html">Interconnected - cyborgs and rooms, two versions for the future of computing</a></li>
+                <li><a href="reading4.html">My website is a shifting house next to a river of knowledge. What could yours be?</a></li>
+                <li><a href="reading5.html">The Coming Age of Calm Technology</a></li>
+                <li><a href="reading6.html">Do Artifacts Have Ethics?</a></li>
+                <li><a href="media_response.html">Media Response - Eno</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Writing Exercises</h2>
+            <ul class="link-list">
+                <li><a href="writing_exercise_1.html">Writing Exercise 1</a></li>
+                <li><a href="writing_exercise_2.html">Writing Exercise 2</a></li>
+                <li><a href="writing_exercise_3.html">Writing Exercise 3</a></li>
+                <li><a href="writing_exercise_4.html">Writing Exercise 4</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+            <ul class="link-list">
+                <li><a href="Project 1/index.html">Project 1. Restaurant or Café Variations</a></li>
+                <li><a href="Project 2/index.html">Project 2. Book → Website</a></li>
+                <li><a href="https://www.figma.com/design/VGTIND4H3Seb6EjCLqhy3S/Starlore-of-Constellations?node-id=0-1&t=PFvU2cIK7VmxuIXq-1">Project 2. Figma Design</a></li>
+                <li><a href="https://www.figma.com/design/AQUgv4odoQ9jBAwZNrodUa/Standby?node-id=0-1&t=rWhtLKHVDVyt4lCl-1">Project 3. Standby Mode</a></li>
+                <li><a href="interview/index.html">Interview</a></li>    
+            </ul>
+        </section>
+    </main>
+
+    <footer>&copy; Echo 2026</footer>
     <script src="script.js"></script>
 </body>
 </html>

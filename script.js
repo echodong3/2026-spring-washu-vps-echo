@@ -22,9 +22,9 @@ function updateBackground() {
   const isCorrectTime = currentMinutes >= start && currentMinutes <= end;
 
   if (isCorrectDay && isCorrectTime) {
-    document.body.style.backgroundColor = "lavender";
+    document.body.dataset.classTime = "true";
   } else {
-    document.body.style.backgroundColor = "lemonchiffon";
+    document.body.dataset.classTime = "false";
   }
 }
 
